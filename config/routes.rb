@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'api/v1/example#index'
   namespace :api do
     namespace :v1 do
       # api/v1/ resources
+      get 'example' => 'example#index'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
