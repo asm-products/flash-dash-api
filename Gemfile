@@ -5,3 +5,5 @@ gem 'rails-api'
 gem 'spring', :group => :development
 gem 'pg'
 
+ruby '2.1.4'
+
