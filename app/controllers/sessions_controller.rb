@@ -5,10 +5,11 @@ class SessionsController < Devise::SessionsController
   # Resets the authentication token each time! Won't allow you to login on two devices
   # at the same time (so does logout).
   def create
-   logger.debug auth_options	  
    self.resource = warden.authenticate!(auth_options)
    sign_in(resource_name, resource)
+ 
    current_user.update authentication_token: nil
+ 
    respond_to do |format|
      format.json {
        render :json => {
