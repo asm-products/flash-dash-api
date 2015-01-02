@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
+gem 'rails'
 gem 'rails-api'
+gem 'devise'
 gem 'spring', :group => :development
 gem 'pg'
-
-ruby '2.1.4'
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
+#gem 'cancan'
 

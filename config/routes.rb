@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users 
   root 'api/v1/example#index'
   namespace :api do
     namespace :v1 do
       # api/v1/ resources
+      devise_for :users, :controllers => {:registrations => "api/v1/registrations", :sessions => "api/v1/sessions"}
       get 'example' => 'example#index'
     end
   end
