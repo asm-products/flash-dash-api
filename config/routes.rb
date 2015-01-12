@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       #devise_for :users, :controllers => {:registrations => "api/v1/registrations", :sessions => "api/v1/sessions"}
       get 'example' => 'example#index'
       get 'instagram' => 'thirdparty#instagram'
+      get 'lastfm' => 'thirdparty#lastfm'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
