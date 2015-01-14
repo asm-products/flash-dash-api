@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'example' => 'example#index'
       get 'instagram' => 'thirdparty#instagram'
       get 'lastfm' => 'thirdparty#lastfm'
+      get 'twitter' => 'thirdparty#twitter'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
