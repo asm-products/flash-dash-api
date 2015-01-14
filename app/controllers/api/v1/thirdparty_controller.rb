@@ -12,6 +12,12 @@ module Api
         output = getrecenttrack(params[:username])
         render json: {response: output}
       end
+
+      def twitter
+        output = gettweets(params[:username])
+        render json: {response: output}
+      end
+
     end
   end
 end
@@ -48,6 +54,23 @@ private
       else
         return "{error: there is no track details to fetch}"
       end
+    else
+      return "{error: there is an error while fetching the data}"
+    end
+  end
+
+  def gettweets username
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = "CONSUMER_KEY"
+      config.consumer_secret = "CONSUMER_SECRET"
+      config.access_token = "ACCESS_TOKEN"
+      config.access_token_secret = "ACCESS_SECRET"
+    end
+
+    options = {count: 5, include_rts: true}
+    response = client.user_timeline(username, options)
+    if response
+      return response
     else
       return "{error: there is an error while fetching the data}"
     end
