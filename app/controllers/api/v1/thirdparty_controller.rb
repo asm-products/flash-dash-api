@@ -3,19 +3,27 @@
 module Api
   module V1
     class ThirdpartyController < ApplicationController
+      before_action :set_username, only: [:instagram, :spotify, :twitter]
       def instagram
-        output = getrecentmedia(params[:username])
+        Thirdparty.verify('Instagram', current_user, @username)
+        output = getrecentmedia(@username)
         render json: { response: output}
       end
 
       def lastfm
-        output = getrecenttrack(params[:username])
+        Thirdparty.verify('Lastfm', current_user, @username)
+        output = getrecenttrack(@username)
         render json: {response: output}
       end
 
       def twitter
-        output = gettweets(params[:username])
+        Thirdparty.verify('Twitter', current_user, @username)
+        output = gettweets(@username)
         render json: {response: output}
+      end
+
+      def set_username
+        @username = params[:username]
       end
 
     end
